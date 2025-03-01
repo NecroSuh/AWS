@@ -1,0 +1,75 @@
+<!-- 로그인 페이지 (login.html) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            transition: background-color 0.5s ease;
+        }
+        header {
+            background-color: #ff6f61;
+            padding: 15px;
+            color: white;
+            text-align: right;
+        }
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #ff3b2f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">홈으로</a>
+        </div>
+    </header>
+
+    <main>
+        <h1 style="color: #ff6f61;">로그인</h1>
+        <form action="login.php" method="post">
+            <label for="username">회원 이름:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="userid">아이디:</label><br>
+            <input type="text" id="userid" name="userid" required><br>
+            <label for="password">패스워드:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <button type="submit">로그인</button>
+        </form>
+    </main>
+</body>
+</html>
