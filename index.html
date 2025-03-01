@@ -1,65 +1,25 @@
-<!-- HTML -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈쇼핑 메인 페이지</title>
+    <title>Computer Center - 부품 쇼핑몰</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #000;
+            background: #1a1a1a;
             margin: 0;
             padding: 0;
-            color: #333;
-            overflow: hidden;
-        }
-        .intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            font-size: 3em;
-            font-weight: bold;
-            animation: doorOpen 4s ease-in-out forwards;
-            z-index: 10;
-        }
-        @keyframes doorOpen {
-            0% { clip-path: inset(0 0 0 0); }
-            50% { clip-path: inset(0 50% 0 50%); }
-            100% { clip-path: inset(0 0 0 0); opacity: 0; }
-        }
-        body.loaded {
-            overflow: visible;
-        }
-        body.loaded .intro-animation {
-            display: none;
-        }
-        body.loaded #content {
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            color: #ddd;
         }
         header {
-            background-color: #ff6f61;
+            background: #003366;
             padding: 15px;
             color: white;
             text-align: center;
             font-size: 2em;
             font-weight: bold;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .auth-links {
             position: absolute;
@@ -67,184 +27,146 @@
             top: 50%;
             transform: translateY(-50%);
         }
-        header a {
-            color: white;
-            margin: 0 5px;
+        .auth-links a {
+            background-color: #ffffff;
+            color: #003366;
+            padding: 10px 15px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.7em;
+            margin-left: 10px;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
         }
-        header a:hover {
-            text-decoration: underline;
-        }
-        #darkModeToggle {
-            background-color: #ffffff;
-            border: none;
-            color: #ff6f61;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.7em;
-            position: absolute;
-            right: 20px;
-            top: calc(100% + 10px);
-        }
-        #darkModeToggle:hover {
-            background-color: #ffd1c1;
+        .auth-links a:hover {
+            background-color: #ffcc00;
+            color: #000;
+            border-color: #ffcc00;
         }
         main {
             text-align: center;
             padding: 20px;
         }
-        .clothes-container {
+        .parts-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
-            background-color: #f7f7f7;
+            background: rgba(50, 50, 50, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 255, 204, 0.3);
         }
-        body.dark-mode .clothes-container {
-            background-color: #f0f0f0;
+        @keyframes rainbow-border {
+            0% { border-color: red; }
+            16% { border-color: orange; }
+            33% { border-color: yellow; }
+            50% { border-color: green; }
+            66% { border-color: blue; }
+            83% { border-color: indigo; }
+            100% { border-color: violet; }
         }
-        .clothes-container img {
-            transition: transform 0.3s ease;
+        .part {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            border-radius: 10px;
-            width: 100%;
-            height: auto;
+            border: 4px solid;
+            animation: rainbow-border 3s infinite linear;
         }
-        .clothes-container img:hover {
+        .part:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 255, 204, 0.5);
+        }
+        .part img {
+            width: 300px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .part img:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         footer {
-            background-color: #ff6f61;
-            padding: 20px;
-            text-align: center;
+            background: #003366;
             color: white;
+            text-align: center;
+            padding: 20px;
             margin-top: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
             gap: 15px;
         }
-        footer a {
-            color: white;
-            margin: 0 15px;
+        .footer-links a {
+            color: #ffcc00;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
-        footer a:hover {
-            color: #ffd1c1;
+        .footer-links a:hover {
             text-decoration: underline;
-        }
-        .social-links {
-            margin-top: 10px;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: white;
-            font-size: 1.5em;
-            transition: transform 0.3s ease;
-        }
-        .social-links a:hover {
-            transform: scale(1.2);
-            color: #ffd1c1;
         }
     </style>
     <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const currentMode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', currentMode);
-        }
-
-        window.onload = function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 4000);
+        function showDescription(partName, description) {
+            alert(`${partName}: ${description}`);
         }
     </script>
 </head>
 <body>
-    <div class="intro-animation">C1oud Team Project</div>
-    <div id="content">
-        <header>
-            C1oud 홈쇼핑
-            <div class="auth-links">
-                <script>
-                    if (sessionStorage.getItem('username')) {
-                        document.write(`
-                            <span>${sessionStorage.getItem('username')}님 환영합니다.</span>
-                            <form action="logout.html" method="post" style="display: inline;">
-                                <button type="button" onclick="logout()" style="background-color: #ffffff; border: none; color: #ff6f61; font-weight: bold; font-size: 0.7em; cursor: pointer;">로그아웃</button>
-                            </form>
-                        `);
-                    } else {
-                        document.write(`
-                            <a href="signup.html">회원가입</a>
-                            <a href="login.html">로그인</a>
-                        `);
-                    }
-
-                    function logout() {
-                        sessionStorage.removeItem('username');
-                        window.location.href = 'index.html';
-                    }
-                </script>
+    <header>
+        Computer Center - 최고의 컴퓨터 부품 쇼핑몰
+        <div class="auth-links">
+            <a href="signup.html">회원가입</a>
+            <a href="login.html">로그인</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <div class="part" onclick="showDescription('고성능 그래픽 카드', '최신 GPU로 강력한 성능을 제공합니다.')">
+                <img src="https://cdn.011st.com/11dims/resize/300x300/quality/75/11src/product/6961824651/B.jpg?27000000" alt="고성능 그래픽 카드">
+                <p>고성능 그래픽 카드</p>
             </div>
-            <button id="darkModeToggle" onclick="toggleDarkMode()">다크 모드</button>
-        </header>
-
-        <main style="background: #ffffff; color: #333; padding: 50px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-<div class="clothes-container">
-                <!-- 옷 이미지를 표시하는 예제 -->
-                <script>
-                    const imageUrls = [
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432',
-                        'https://shop.supreme.com/cdn/shop/files/J101_FW24_MisterCartoonLeatherJacket_Black01_3446e7c1-dde4-47dd-a05a-b844d18e431c_360x.jpg?v=1728499432'
-                    ];
-                    
-                    imageUrls.forEach((url, index) => {
-                        document.write(`<img src='${url}' alt='옷 이미지 ${index + 1}'>`);
-                    });
-                </script>
+            <div class="part" onclick="showDescription('최신 CPU', '최신 기술이 적용된 CPU로 뛰어난 연산 능력을 갖췄습니다.')">
+                <img src="https://www.ilovepcbang.com/news/photo/202402/103025_221759_1653.jpg" alt="최신 CPU">
+                <p>최신 CPU</p>
             </div>
-        </main>
-
-        <footer>
-            <div>
-                <a href="https://store.musinsa.com/" target="_blank">무신사</a>
-                <a href="https://www.lotteimall.com/" target="_blank">롯데 홈쇼핑</a>
-                <a href="https://www.supremenewyork.com/" target="_blank">Supreme</a>
+            <div class="part" onclick="showDescription('고속 SSD', '빠른 속도의 SSD로 부팅 및 로딩 시간을 단축하세요.')">
+                <img src="https://img2.quasarzone.com/editor/2023/09/11/77162f67f4de94604e8a50950adebc98.webp" alt="고속 SSD">
+                <p>고속 SSD</p>
             </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com" target="_blank">&#xf09a; Facebook</a>
-                <a href="https://www.twitter.com" target="_blank">&#xf099; Twitter</a>
-                <a href="https://www.instagram.com" target="_blank">&#xf16d; Instagram</a>
+            <div class="part" onclick="showDescription('고용량 RAM', '멀티태스킹에 최적화된 대용량 RAM입니다.')">
+                <img src="https://cdn.hankyung.com/photo/201905/01.16554101.1.jpg" alt="고용량 RAM">
+                <p>고용량 RAM</p>
             </div>
-            <p>&copy; 2024 C1oud 홈쇼핑. All rights reserved.</p>
-        </footer>
-    </div>
+            <div class="part" onclick="showDescription('수냉 쿨러', '고성능 CPU를 위한 최적의 냉각 시스템입니다.')">
+                <img src="https://img.danawa.com/images/descFiles/6/354/5353254_BbRez0Ai6T_1684682020762.jpeg" alt="수냉 쿨러">
+                <p>수냉 쿨러</p>
+            </div>
+            <div class="part" onclick="showDescription('프리미엄 파워서플라이', '안정적인 전력을 공급하는 고품질 파워서플라이입니다.')">
+                <img src="https://file.bodnara.co.kr/logo/insidelogo.php?image=%2Fhttp%3A%2F%2Ffile.bodnara.co.kr%2Fwebedit%2Fnews%2F2014%2F1434592180-a1.jpg" alt="프리미엄 파워서플라이">
+                <p>프리미엄 파워서플라이</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Computer Center - 모든 권리 보유</p>
+        <div class="footer-links">
+            <a href="https://www.danawa.com/" target="_blank">다나와</a>
+            <a href="https://commawang.com/" target="_blank">컴마왕</a>
+            <a href="https://quasarzone.com/" target="_blank">퀘사이존</a>
+        </div>
+    </footer>
 </body>
 </html>
