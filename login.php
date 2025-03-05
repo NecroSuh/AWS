@@ -27,7 +27,7 @@ if ($result->num_rows == 0) {
         echo "<script>alert('패스워드가 틀립니다.'); window.location.href='login.html';</script>";
     } else {
         $_SESSION['username'] = $loginUsername;
-        echo "<script>alert('로그인 성공!'); window.location.href='index.php';</script>";
+        echo "<script>alert('로그인 성공!'); window.location.href='index.html';</script>";
     }
 }
 
