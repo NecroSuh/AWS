@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$servername = "<RDS_ENDPOINT>";
-$username = "<RDS_USERNAME>";
-$password = "<RDS_PASSWORD>";
+$servername = "localhost";
+$username = "root";
+$password = "P@ssw0rd";
 $dbname = "homeshopping";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
