@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$servername = "<RDS_ENDPOINT>";
-$username = "<RDS_USERNAME>";
-$password = "<RDS_PASSWORD>";
+$servername = "localhost";
+$username = "root";
+$password = "P@ssw0rd";
 $dbname = "homeshopping";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
 } else {
     $sql = "INSERT INTO users (username, userid, password) VALUES ('$signupUsername', '$signupUserid', '$signupPassword')";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('회원가입 성공!'); window.location.href='index.php';</script>";
+        echo "<script>alert('회원가입 성공!'); window.location.href='index.html';</script>";
     } else {
         echo "오류: " . $conn->error;
     }
